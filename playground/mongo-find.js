@@ -11,7 +11,7 @@ MongoClient.connect("mongodb://localhost:27017/ToDoApp",(err,db)=>
         console.log("Data Fetched");
         console.log(result);
     },(err)=>{
-        console.log('unable to fetch todos',err);
+        console.log('unable to fetch userNames',err);
     });
 */
 
@@ -19,7 +19,7 @@ MongoClient.connect("mongodb://localhost:27017/ToDoApp",(err,db)=>
         console.log("Data Fetched");
         console.log(count);
     },(err)=>{
-        console.log('unable to fetch todos',err);
+        console.log('unable to fetch userNames',err);
     });
 
    db.close();
