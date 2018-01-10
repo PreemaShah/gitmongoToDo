@@ -5,7 +5,7 @@ var user = mongoose.model('User',{
            type:String
     }
 });
-var user1 = new user({
+/*var user1 = new user({
     email:"lanetteam.mno@gmail.com"
 });
 
@@ -14,7 +14,7 @@ user1.save().then((doc)=>{
 },(err)=>{
     console.log(err);
 });
-
+*/
 module.exports = {
     user
 };
