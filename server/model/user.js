@@ -1,22 +1,19 @@
 var mongoose = require('mongoose');
-var user = mongoose.model('Users',{
+var user = mongoose.model('User',{
 
     email:{
-        type:String,
-        required:true,
-        trim:true,
-        minlength:1
+           type:String
     }
 });
-/*var user1 = new user({
-    email:"lanetteam.preema@gmail.com"
+var user1 = new user({
+    email:"lanetteam.mno@gmail.com"
 });
 
 user1.save().then((doc)=>{
     console.log("saved!");
 },(err)=>{
     console.log(err);
-});*/
+});
 
 module.exports = {
     user
