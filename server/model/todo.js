@@ -1,14 +1,11 @@
 var mongoose = require('mongoose');
 
-var todo = mongoose.model('ToDoApp',{
+var todo = mongoose.model('todoapps',{
     text:{
         type:String
     },
     completed:{
         type:Boolean
-    },
-    completedAt:{
-        type:Number
     }
 });
 
@@ -24,7 +21,7 @@ newtodo.save().then((doc)=>{
 });
 
 var othertodo = new todo({
-    text:"wash plates",
+    text:"wash clothes",
     completed:true
 });
 

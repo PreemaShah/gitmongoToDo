@@ -1,4 +1,5 @@
 var express = require('express');
+const _=require('lodash');
 var bodyparser = require('body-parser');
 var {mongoose} = require('./db/db.js');
 var {todo} = require('./model/todo.js');
@@ -34,18 +35,18 @@ app.get("/todos/:id",(req,res)=>{
     var id = req.params.id;
     //res.send(req.params);
     if(!ObjectID.isValid(id)){
-        res.status(404).send();
+        res.status(404).send("Invalid id");
     }
 
 
-    user.findById(id).then((doc)=>{
+    todo.findById(id).then((doc)=>{
         if(!doc)
         {
-            return res.status(404).send();
+            return res.status(404).send("doc not found");
         }
         res.send(doc);
     },(err)=>{
-        return res.status(400).send();
+        return res.status(400).send("err");
     })
 
 });
@@ -65,6 +66,35 @@ app.delete("/todos/:id",(req,res)=>{
        res.status(404).send(e);
     });
 });
+
+app.put("/todos/:id",(req,res)=> {
+
+    var id = req.params.id;
+    todo.findOneAndUpdate(id,
+
+        {
+            $set: {
+                text: "brush ur teeth"
+            }
+        },
+        {
+            returnOriginal: false
+        }).then((result) => {
+        res.send(result);
+    });
+})
+
+app.post("/user",(req,res)=>{
+    var body=_.pick(req.body,["email","password"]);
+    var user1= new user(body);
+
+    user1.save().then((User)=>{
+        res.send(User)
+    }).catch((e)=>{
+        res.status(404).send(e);
+    })
+});
+
 app.listen(3000,()=>{
     console.log(`started server on port :3000`);
 });
